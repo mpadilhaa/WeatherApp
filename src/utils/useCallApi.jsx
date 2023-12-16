@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+export async function apiWeatherCall(city) {
+  const response = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8b32c61e6740d29e46f5ac6611825048&units=metric&lang=pt_br`
+  );
 
-const useCallApi = ({ city }) => {
-  const IMG_API = `https://api.unsplash.com/search/photos?&query=${city}`;
-  const WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8b32c61e6740d29e46f5ac6611825048&units=metric&lang=pt_br`;
+  const detailsWeather = await response.json();
 
-  useEffect;
-
-  return <div>useCallApi</div>;
-};
-
-export default useCallApi;
+  return detailsWeather;
+}
