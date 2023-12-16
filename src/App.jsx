@@ -4,10 +4,11 @@ import "./App.css";
 import TemperatureDetails from "./components/TemperatureDetails/TemperatureDetails";
 import { apiWeatherCall, apiPexelsCall } from "./utils/useCallApi";
 import WeatherInput from "./components/WeatherInput/WeatherInput";
+import TemperatureData from "./components/TemperatureData/TemperatureData";
 
 function App() {
-  const [data, setData] = useState([]);
-  const [photo, setPhoto] = useState([]);
+  const [data, setData] = useState([] | null);
+  const [photo, setPhoto] = useState([] | null);
 
   const cityName = useRef(null);
 
@@ -15,47 +16,41 @@ function App() {
     e.preventDefault();
     apiWeatherCall(cityName.current?.value).then((data) => setData(data));
     apiPexelsCall(cityName.current?.value, setPhoto);
-    console.log(data);
-    console.log(photo);
+
+    cityName.current.value = "";
   }
+
   return (
     <>
-      {data ? (
+      {!data && (
+        <WeatherInput fnChangedValue={cityName} submitForm={submitForm} />
+      )}
+      {data && photo ? (
         <div className="w-body">
           <img
             className="img-background"
             alt=""
-            src={photo.photos[0].src.landscape}
+            src={photo.photos[1].src.landscape}
           />
           <WeatherInput fnChangedValue={cityName} submitForm={submitForm} />
           <div className="info-weather">
-            <div className="city-and-icon">
-              <h1 className="city">{data.name},</h1>
-            </div>
-            <div className="time-and-day">
-              <h1 className="day">
-                {}
-                <span className="time">{}</span>
-              </h1>
-            </div>
-            <div className="temperature">
-              <div className="temperature-celcius">
-                <h1 className="temperature-value">
-                  {data.main.temp.toFixed(0)}
-                </h1>
-                <span className="temperature-type">°C</span>
-              </div>
-              <div className="min-and-max">
-                <span className="min"></span>
-                <span>|</span>
-                <span className="max"></span>
-              </div>
+            <TemperatureData data={data} />
+            <div>
+              <TemperatureDetails>
+                {data.wind.speed.toFixed(0)}
+              </TemperatureDetails>
+              <TemperatureDetails>{data.main.humidity}</TemperatureDetails>
+              <TemperatureDetails>
+                {new Date(data.sys.sunrise * 1000).getHours()}
+              </TemperatureDetails>
+              <TemperatureDetails>
+                {new Date(data.sys.sunset * 1000).getHours()}
+              </TemperatureDetails>
             </div>
           </div>
-          <TemperatureDetails />
         </div>
       ) : (
-        "oi"
+        <h1>carregando</h1>
       )}
     </>
   );

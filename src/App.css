@@ -42,35 +42,3 @@ span {
   padding: 7px 20px;
   font-size: 16px;
 }
-
-.info-weather {
-  background-color: rgba(0, 0, 0, 69%);
-  width: 100%;
-  height: 400px;
-  position: absolute;
-  bottom: 0;
-  padding: 0 285px;
-}
-
-.temperature {
-  display: flex;
-  flex-direction: column;
-
-  width: 390px;
-}
-
-.temperature-celcius {
-  display: flex;
-  gap: 16px;
-}
-
-.temperature-value {
-  font-size: 130px;
-  font-weight: 600;
-}
-
-.temperature-type {
-  font-size: 60px;
-  font-weight: 200;
-  padding-top: 16px;
-}
