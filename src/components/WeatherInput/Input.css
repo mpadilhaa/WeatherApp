@@ -1,9 +1,14 @@
-.search-form {
+.form-search {
   display: flex;
   justify-content: center;
   padding-top: 40px;
 }
 
+.form {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 .search {
   background-color: rgba(0, 0, 0, 69%);
   border: 1px solid transparent;
@@ -17,4 +22,10 @@
 .search:focus {
   outline: none;
   background-color: rgba(0, 0, 0, 80%);
+}
+
+.icon-search {
+  position: absolute;
+  margin-top: 3px;
+  right: 15px;
 }
