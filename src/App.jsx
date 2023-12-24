@@ -6,6 +6,12 @@ import WeatherInput from "./components/WeatherInput/WeatherInput";
 import TemperatureData from "./components/TemperatureData/TemperatureData";
 import { apiWeatherCall, apiPexelsCall } from "./utils/useCallApi";
 
+//icons
+import { TbWind } from "react-icons/tb";
+import { WiHumidity } from "react-icons/wi";
+import { GrSun } from "react-icons/gr";
+import { GrMoon } from "react-icons/gr";
+
 function App() {
   const [data, setData] = useState([] | null);
   const [photo, setPhoto] = useState([] | null);
@@ -42,17 +48,23 @@ function App() {
           <div className="info-weather">
             <TemperatureData data={data} />
             <div>
-              <TemperatureDetails>
-                {data.wind.speed.toFixed(0)}
+              <TemperatureDetails icon={<TbWind />}>
+                {data.wind.speed.toFixed(2)}
                 km/h
               </TemperatureDetails>
-              <TemperatureDetails>{data.main.humidity} % </TemperatureDetails>
-              <TemperatureDetails>
-                {formatHour(data.sys.sunrise)}
+              <TemperatureDetails icon={<WiHumidity />}>
+                {data.main.humidity} %{" "}
+              </TemperatureDetails>
+              <TemperatureDetails icon={<GrSun />}>
+                {data.timezone > 0
+                  ? formatHour(data.sys.sunset)
+                  : formatHour(data.sys.sunrise)}
                 AM
               </TemperatureDetails>
-              <TemperatureDetails>
-                {formatHour(data.sys.sunset)}
+              <TemperatureDetails icon={<GrMoon />}>
+                {data.timezone < 0
+                  ? formatHour(data.sys.sunset)
+                  : formatHour(data.sys.sunrise)}
                 PM
               </TemperatureDetails>
             </div>
