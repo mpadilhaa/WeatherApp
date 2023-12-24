@@ -1,35 +1,54 @@
-.info-weather {
-  background-color: rgba(0, 0, 0, 69%);
-  width: 100%;
-  height: 400px;
-  position: absolute;
-  bottom: 0;
-  padding: 0 285px;
-}
-
 .temperature {
   display: flex;
-  flex-direction: column;
-
-  width: 390px;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .temperature-celcius {
   display: flex;
-  gap: 16px;
+  gap: 9px;
+  margin-top: -12px;
 }
 
 .temperature-value {
-  font-size: 130px;
+  font-size: 60px;
   font-weight: 600;
 }
 
 .temperature-type {
-  font-size: 60px;
+  font-size: 30px;
   font-weight: 200;
-  padding-top: 16px;
+  padding-top: 7px;
+}
+.city {
+  font-weight: 500;
+  font-size: 18px;
 }
 
+.city-country {
+  font-weight: 700;
+}
 .info-city {
   display: flex;
+}
+
+.min-and-max small {
+  position: absolute;
+  left: 25px;
+  top: 2px;
+  font-size: 10px;
+}
+
+.min,
+.max {
+  position: relative;
+}
+
+.min {
+  padding-right: 20px;
+  font: 300;
+}
+.max {
+  margin-left: 14px;
+  font-weight: 600;
 }

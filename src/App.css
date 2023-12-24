@@ -7,13 +7,15 @@
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
 }
-
-h1 {
-  font-weight: 400;
+svg path {
+  stroke: white;
+  border: none;
 }
+
 span {
   font-size: 20px;
 }
+
 .img-background {
   position: absolute;
   width: 100%;
@@ -26,19 +28,18 @@ span {
   bottom: 0;
 }
 
-.search-form {
+.info-weather {
+  background-color: rgba(0, 0, 0, 69%);
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  padding: 32px;
   display: flex;
-  justify-content: center;
-  margin-top: 60px;
+  flex-direction: column;
+  align-items: center;
 }
 
-.search {
-  background-color: rgba(0, 0, 0, 69%);
-  border: none;
-  width: 400px;
-  height: 40px;
-  border-radius: 90px;
-
-  padding: 7px 20px;
-  font-size: 16px;
+.details-temp {
+  margin-top: 40px;
 }

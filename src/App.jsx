@@ -7,7 +7,7 @@ import TemperatureData from "./components/TemperatureData/TemperatureData";
 import { apiWeatherCall, apiPexelsCall } from "./utils/useCallApi";
 
 //icons
-import { TbWind } from "react-icons/tb";
+import { PiWindLight } from "react-icons/pi";
 import { WiHumidity } from "react-icons/wi";
 import { GrSun } from "react-icons/gr";
 import { GrMoon } from "react-icons/gr";
@@ -48,25 +48,29 @@ function App() {
           <div className="info-weather">
             <TemperatureData data={data} />
             <div>
-              <TemperatureDetails icon={<TbWind />}>
-                {data.wind.speed.toFixed(2)}
-                km/h
-              </TemperatureDetails>
-              <TemperatureDetails icon={<WiHumidity />}>
-                {data.main.humidity} %{" "}
-              </TemperatureDetails>
-              <TemperatureDetails icon={<GrSun />}>
-                {data.timezone > 0
-                  ? formatHour(data.sys.sunset)
-                  : formatHour(data.sys.sunrise)}
-                AM
-              </TemperatureDetails>
-              <TemperatureDetails icon={<GrMoon />}>
-                {data.timezone < 0
-                  ? formatHour(data.sys.sunset)
-                  : formatHour(data.sys.sunrise)}
-                PM
-              </TemperatureDetails>
+              <div className="details-temp">
+                <TemperatureDetails icon={<PiWindLight size={30} />}>
+                  {data.wind.speed.toFixed(2)}
+                  km/h
+                </TemperatureDetails>
+                <TemperatureDetails icon={<WiHumidity size={30} />}>
+                  {data.main.humidity} %{" "}
+                </TemperatureDetails>
+                <TemperatureDetails
+                  icon={<GrSun size={30} style={{ color: "yellow" }} />}
+                >
+                  {data.timezone > 0
+                    ? formatHour(data.sys.sunset)
+                    : formatHour(data.sys.sunrise)}
+                  AM
+                </TemperatureDetails>
+                <TemperatureDetails icon={<GrMoon size={30} />}>
+                  {data.timezone < 0
+                    ? formatHour(data.sys.sunset)
+                    : formatHour(data.sys.sunrise)}
+                  PM
+                </TemperatureDetails>
+              </div>
             </div>
           </div>
         </div>

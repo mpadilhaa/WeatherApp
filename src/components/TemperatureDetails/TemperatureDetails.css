@@ -1,0 +1,9 @@
+.icons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 7px;
+}
+.icons p {
+  margin-bottom: 7px;
+}

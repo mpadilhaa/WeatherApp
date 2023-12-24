@@ -2,8 +2,8 @@ import "./TemperatureDetails.css";
 
 const TemperatureDetails = ({ children, icon }) => {
   return (
-    <div className="Icons">
-      <span>{icon}</span>
+    <div className="icons">
+      <div>{icon}</div>
       <p>{children}</p>
     </div>
   );
