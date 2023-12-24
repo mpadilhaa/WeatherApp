@@ -16,16 +16,5 @@ export async function apiPexelsCall(city, photo) {
   );
   const query = city;
 
-  client.photos.search({ query, per_page: 3 }).then((photos) => photo(photos));
-}
-
-async function apiTimeCity(lat, lon) {
-  const response = await fetch(
-    `https://timeapi.io/api/TimeZone/coordinate?latitude=${lat}&longitude=${lon}`,
-    {
-      mode: "no-cors",
-    }
-  );
-
-  return response;
+  return client.photos.search({ query, per_page: 3 });
 }

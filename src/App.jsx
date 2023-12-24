@@ -2,9 +2,9 @@ import { useState, useRef } from "react";
 import "./App.css";
 
 import TemperatureDetails from "./components/TemperatureDetails/TemperatureDetails";
-import { apiWeatherCall, apiPexelsCall } from "./utils/useCallApi";
 import WeatherInput from "./components/WeatherInput/WeatherInput";
 import TemperatureData from "./components/TemperatureData/TemperatureData";
+import { apiWeatherCall, apiPexelsCall } from "./utils/useCallApi";
 
 function App() {
   const [data, setData] = useState([] | null);
@@ -12,20 +12,26 @@ function App() {
 
   const cityName = useRef(null);
 
-  function submitForm(e) {
+  const formatHour = (valueHours) => {
+    return new Date(valueHours * 1000).getHours();
+  };
+
+  async function submitForm(e) {
     e.preventDefault();
-    apiWeatherCall(cityName.current?.value).then((data) => setData(data));
-    apiPexelsCall(cityName.current?.value, setPhoto);
+
+    await apiWeatherCall(cityName.current?.value).then((data) => {
+      setData(data);
+    });
+    await apiPexelsCall(cityName.current?.value).then((photo) =>
+      setPhoto(photo)
+    );
 
     cityName.current.value = "";
   }
 
   return (
     <>
-      {!data && (
-        <WeatherInput fnChangedValue={cityName} submitForm={submitForm} />
-      )}
-      {data && photo ? (
+      {photo ? (
         <div className="w-body">
           <img
             className="img-background"
@@ -38,19 +44,22 @@ function App() {
             <div>
               <TemperatureDetails>
                 {data.wind.speed.toFixed(0)}
+                km/h
               </TemperatureDetails>
-              <TemperatureDetails>{data.main.humidity}</TemperatureDetails>
+              <TemperatureDetails>{data.main.humidity} % </TemperatureDetails>
               <TemperatureDetails>
-                {new Date(data.sys.sunrise * 1000).getHours()}
+                {formatHour(data.sys.sunrise)}
+                AM
               </TemperatureDetails>
               <TemperatureDetails>
-                {new Date(data.sys.sunset * 1000).getHours()}
+                {formatHour(data.sys.sunset)}
+                PM
               </TemperatureDetails>
             </div>
           </div>
         </div>
       ) : (
-        <h1>carregando</h1>
+        <WeatherInput fnChangedValue={cityName} submitForm={submitForm} />
       )}
     </>
   );
