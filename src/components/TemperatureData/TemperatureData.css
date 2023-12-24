@@ -32,23 +32,28 @@
   display: flex;
 }
 
+.min-and-max {
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+}
 .min-and-max small {
-  position: absolute;
-  left: 25px;
-  top: 2px;
+  padding-top: 2px;
   font-size: 10px;
 }
 
 .min,
 .max {
-  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 4px;
 }
 
-.min {
-  padding-right: 20px;
-  font: 300;
+.min h3 {
+  font-weight: 400;
 }
+
 .max {
-  margin-left: 14px;
-  font-weight: 600;
+  font-weight: 700;
 }

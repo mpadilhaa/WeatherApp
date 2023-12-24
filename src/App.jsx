@@ -50,11 +50,12 @@ function App() {
             <div>
               <div className="details-temp">
                 <TemperatureDetails icon={<PiWindLight size={30} />}>
-                  {data.wind.speed.toFixed(2)}
-                  km/h
+                  {data.wind.speed.toFixed(2)}{" "}
+                  <small className="am-pm">km/h</small>
                 </TemperatureDetails>
                 <TemperatureDetails icon={<WiHumidity size={30} />}>
-                  {data.main.humidity} %{" "}
+                  {data.main.humidity}
+                  <small className="am-pm">%</small>
                 </TemperatureDetails>
                 <TemperatureDetails
                   icon={<GrSun size={30} style={{ color: "yellow" }} />}
@@ -62,13 +63,13 @@ function App() {
                   {data.timezone > 0
                     ? formatHour(data.sys.sunset)
                     : formatHour(data.sys.sunrise)}
-                  AM
+                  <small className="am-pm">AM</small>
                 </TemperatureDetails>
                 <TemperatureDetails icon={<GrMoon size={30} />}>
                   {data.timezone < 0
                     ? formatHour(data.sys.sunset)
                     : formatHour(data.sys.sunrise)}
-                  PM
+                  <small className="am-pm">PM</small>
                 </TemperatureDetails>
               </div>
             </div>

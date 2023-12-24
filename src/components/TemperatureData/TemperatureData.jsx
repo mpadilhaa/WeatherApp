@@ -15,13 +15,15 @@ const TemperatureData = ({ data }) => {
           <span className="temperature-type">°C</span>
         </div>
         <div className="min-and-max">
-          <span className="min">
-            {Math.floor(data.main.temp_min)} <small>°C</small>
-          </span>
-          <span>|</span>
-          <span className="max">
-            {Math.floor(data.main.temp_max)} <small>°C</small>
-          </span>
+          <div className="min">
+            <h3>{Math.floor(data.main.temp_min)}</h3>
+            <small>°C</small>
+          </div>
+          <div>|</div>
+          <div className="max">
+            <h3>{Math.floor(data.main.temp_max)}</h3>
+            <small>°C</small>
+          </div>
         </div>
       </div>
     </div>

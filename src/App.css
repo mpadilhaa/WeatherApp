@@ -26,10 +26,12 @@ span {
   left: 0;
   right: 0;
   bottom: 0;
+  opacity: 0.6;
 }
 
 .info-weather {
   background-color: rgba(0, 0, 0, 69%);
+
   width: 100%;
   height: auto;
   position: absolute;
@@ -42,4 +44,16 @@ span {
 
 .details-temp {
   margin-top: 40px;
+}
+
+.am-pm {
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 6px;
+}
+.w-body {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  filter: brightness(1);
 }
