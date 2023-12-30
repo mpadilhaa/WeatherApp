@@ -1,0 +1,13 @@
+.search-card {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+}
+.search-text {
+  color: white;
+}
+
+.search-img {
+  width: 700px;
+}

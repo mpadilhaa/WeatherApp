@@ -2,12 +2,16 @@ import React from "react";
 import "./Input.css";
 import { IoSearchSharp } from "react-icons/io5";
 
-const WeatherInput = ({ fnChangedValue, submitForm }) => {
+const WeatherInput = ({ VariableWhite = true, fnChangedValue, submitForm }) => {
   return (
     <div className="form-search">
       <form className="form" onSubmit={submitForm}>
-        <input className="search" type="text" ref={fnChangedValue} />
-        <div className="icon-search">
+        <input
+          className={VariableWhite ? "search" : "search-white"}
+          type="text"
+          ref={fnChangedValue}
+        />
+        <div className={VariableWhite ? "icon-search" : "icon-search-black"}>
           <IoSearchSharp />
         </div>
       </form>

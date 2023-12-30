@@ -29,3 +29,26 @@
   margin-top: 3px;
   right: 15px;
 }
+
+.search-white {
+  background-color: rgba(255, 255, 255, 0.69);
+  border: 1px solid transparent;
+  width: 250px;
+  height: 30px;
+  border-radius: 90px;
+  color: black;
+  padding: 7px 20px;
+  font-size: 14px;
+}
+
+.search-white:focus {
+  background-color: rgba(255, 255, 255, 0.9);
+  outline: none;
+}
+
+.icon-search-black svg {
+  position: absolute;
+  top: 7px;
+  right: 15px;
+  fill: black;
+}

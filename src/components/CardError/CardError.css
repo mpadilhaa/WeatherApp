@@ -1,11 +1,10 @@
 .card-error {
-  background-color: red;
+  background-color: rgb(252, 86, 86);
   padding: 10px;
   border-radius: 10px;
   display: inline-block;
 }
 
-.card-error h2 {
-  display: inline;
+.card-error small {
   color: white;
 }

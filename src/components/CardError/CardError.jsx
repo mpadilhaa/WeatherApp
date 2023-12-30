@@ -3,7 +3,7 @@ import "./CardError.css";
 const CardError = () => {
   return (
     <div className="card-error">
-      <h2>Cidade não Encontrada, favor inserir um nome valido.</h2>
+      <small>Cidade não Encontrada, favor inserir um nome valido.</small>
     </div>
   );
 };

@@ -35,6 +35,9 @@ function App() {
     cityName.current.value = "";
     if (!data.name) {
       setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
     }
   }
   return (
@@ -80,8 +83,13 @@ function App() {
         </div>
       ) : (
         <>
-          <WeatherInput fnChangedValue={cityName} submitForm={submitForm} />
-          <SearchCard />
+          <SearchCard>
+            <WeatherInput
+              VariableWhite={false}
+              fnChangedValue={cityName}
+              submitForm={submitForm}
+            />
+          </SearchCard>
         </>
       )}
     </>
