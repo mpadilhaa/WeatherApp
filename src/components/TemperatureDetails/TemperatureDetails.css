@@ -7,4 +7,10 @@
 .icons p {
   margin-bottom: 7px;
   font-weight: 300;
+  display: flex;
+}
+
+.icons p,
+.icons small {
+  font-size: clamp(0.875rem, 0.788rem + 0.372vw, 1.25rem);
 }

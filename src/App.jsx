@@ -51,32 +51,34 @@ function App() {
             src={photo.photos[0].src.landscape}
           />
           <WeatherInput fnChangedValue={cityName} submitForm={submitForm} />
-          <div className="info-weather">
-            <TemperatureData data={data} />
-            <div>
-              <div className="details-temp">
-                <TemperatureDetails icon={<PiWindLight size={30} />}>
-                  {data.wind.speed.toFixed(2)}{" "}
-                  <small className="am-pm">km/h</small>
-                </TemperatureDetails>
-                <TemperatureDetails icon={<WiHumidity size={30} />}>
-                  {data.main.humidity}
-                  <small className="am-pm">%</small>
-                </TemperatureDetails>
-                <TemperatureDetails
-                  icon={<GrSun size={30} style={{ color: "yellow" }} />}
-                >
-                  {data.timezone > 0
-                    ? formatHour(data.sys.sunset)
-                    : formatHour(data.sys.sunrise)}
-                  <small className="am-pm">AM</small>
-                </TemperatureDetails>
-                <TemperatureDetails icon={<GrMoon size={30} />}>
-                  {data.timezone < 0
-                    ? formatHour(data.sys.sunset)
-                    : formatHour(data.sys.sunrise)}
-                  <small className="am-pm">PM</small>
-                </TemperatureDetails>
+          <div className="background-weather-data">
+            <div className="info-weather">
+              <TemperatureData data={data} />
+              <div className="details-temp-main">
+                <div className="details-temp">
+                  <TemperatureDetails icon={<PiWindLight size={30} />}>
+                    {data.wind.speed.toFixed(2)}{" "}
+                    <small className="am-pm">km/h</small>
+                  </TemperatureDetails>
+                  <TemperatureDetails icon={<WiHumidity size={30} />}>
+                    {data.main.humidity}
+                    <small className="am-pm">%</small>
+                  </TemperatureDetails>
+                  <TemperatureDetails
+                    icon={<GrSun size={30} style={{ color: "yellow" }} />}
+                  >
+                    {data.timezone > 0
+                      ? formatHour(data.sys.sunset)
+                      : formatHour(data.sys.sunrise)}
+                    <small className="am-pm">AM</small>
+                  </TemperatureDetails>
+                  <TemperatureDetails icon={<GrMoon size={30} />}>
+                    {data.timezone < 0
+                      ? formatHour(data.sys.sunset)
+                      : formatHour(data.sys.sunrise)}
+                    <small className="am-pm">PM</small>
+                  </TemperatureDetails>
+                </div>
               </div>
             </div>
           </div>

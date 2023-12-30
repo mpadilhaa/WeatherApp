@@ -12,10 +12,6 @@ svg path {
   border: none;
 }
 
-span {
-  font-size: 20px;
-}
-
 .img-background {
   position: absolute;
   width: 100%;
@@ -29,17 +25,23 @@ span {
   opacity: 0.8;
 }
 
-.info-weather {
+.background-weather-data {
   background-color: rgba(0, 0, 0, 69%);
 
   width: 100%;
-  height: auto;
+
   position: absolute;
   bottom: 0;
   padding: 32px;
+}
+.info-weather {
+  min-height: 200px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
   align-items: center;
+  max-width: 900px;
 }
 
 .details-temp {
@@ -47,7 +49,6 @@ span {
 }
 
 .am-pm {
-  font-size: 16px;
   font-weight: 500;
   padding-left: 6px;
 }
@@ -56,4 +57,21 @@ span {
   height: 100vh;
   background: rgba(0, 0, 0, 0.3);
   filter: brightness(1);
+}
+
+@media screen and (min-width: 700px) {
+  .info-weather {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 50px;
+  }
+
+  .background-weather-data {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+  .details-temp {
+    margin-top: 0;
+  }
 }

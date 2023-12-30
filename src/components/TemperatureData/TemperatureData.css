@@ -1,6 +1,7 @@
 .temperature {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 10px;
   width: 100%;
 }
 
@@ -11,22 +12,23 @@
 }
 
 .temperature-value {
-  font-size: 60px;
+  font-size: clamp(3.75rem, 2.734rem + 4.334vw, 8.125rem);
   font-weight: 600;
 }
 
 .temperature-type {
-  font-size: 30px;
+  font-size: clamp(1.875rem, 1.222rem + 2.786vw, 4.688rem);
   font-weight: 200;
   padding-top: 7px;
 }
 .city {
   font-weight: 500;
-  font-size: 18px;
+  font-size: clamp(1rem, 0.768rem + 0.991vw, 2rem);
 }
 
 .city-country {
   font-weight: 700;
+  font-size: (1rem, 0.768rem + 0.991vw, 2rem);
 }
 .info-city {
   display: flex;
@@ -47,6 +49,7 @@
   display: flex;
   flex-direction: row;
 
+  font-size: clamp(1rem, 0.913rem + 0.372vw, 1.375rem);
   gap: 4px;
 }
 
@@ -56,4 +59,16 @@
 
 .max {
   font-weight: 700;
+}
+
+@media screen and (min-width: 700px) {
+  .temperature {
+    flex-direction: column;
+    justify-content: unset;
+    width: auto;
+    gap: 15px;
+  }
+  .temperature-type {
+    padding: 12px 0;
+  }
 }
