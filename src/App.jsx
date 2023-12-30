@@ -5,17 +5,19 @@ import TemperatureDetails from "./components/TemperatureDetails/TemperatureDetai
 import WeatherInput from "./components/WeatherInput/WeatherInput";
 import TemperatureData from "./components/TemperatureData/TemperatureData";
 import { apiWeatherCall, apiPexelsCall } from "./utils/useCallApi";
+import CardError from "./components/CardError/CardError";
 
 //icons
 import { PiWindLight } from "react-icons/pi";
 import { WiHumidity } from "react-icons/wi";
 import { GrSun } from "react-icons/gr";
 import { GrMoon } from "react-icons/gr";
-import CardError from "./components/CardError/CardError";
+import SearchCard from "./components/SearchCard/SearchCard";
 
 function App() {
   const [data, setData] = useState([] | null);
   const [photo, setPhoto] = useState([] | null);
+  const [error, setError] = useState(false);
 
   const cityName = useRef(null);
 
@@ -25,20 +27,20 @@ function App() {
 
   async function submitForm(e) {
     e.preventDefault();
-
+    const photoData = await apiPexelsCall(cityName.current?.value);
     const weatherData = await apiWeatherCall(cityName.current?.value);
 
-    const photoData = await apiPexelsCall(cityName.current?.value);
-    if (weatherData.name) {
-      setData(weatherData);
-      setPhoto(photoData);
-    } else {
-      <CardError />;
+    setData(weatherData);
+    setPhoto(photoData);
+    cityName.current.value = "";
+    if (!data.name) {
+      setError(true);
     }
   }
   return (
     <>
-      {photo ? (
+      {error && <CardError />}
+      {data.name ? (
         <div className="w-body">
           <img
             className="img-background"
@@ -77,7 +79,10 @@ function App() {
           </div>
         </div>
       ) : (
-        <WeatherInput fnChangedValue={cityName} submitForm={submitForm} />
+        <>
+          <WeatherInput fnChangedValue={cityName} submitForm={submitForm} />
+          <SearchCard />
+        </>
       )}
     </>
   );
