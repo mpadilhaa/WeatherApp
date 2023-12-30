@@ -33,7 +33,7 @@ function App() {
     setData(weatherData);
     setPhoto(photoData);
     cityName.current.value = "";
-    if (!data.name) {
+    if (!weatherData.name) {
       setError(true);
       setTimeout(() => {
         setError(false);
