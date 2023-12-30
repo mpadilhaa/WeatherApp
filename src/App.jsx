@@ -11,6 +11,7 @@ import { PiWindLight } from "react-icons/pi";
 import { WiHumidity } from "react-icons/wi";
 import { GrSun } from "react-icons/gr";
 import { GrMoon } from "react-icons/gr";
+import CardError from "./components/CardError/CardError";
 
 function App() {
   const [data, setData] = useState([] | null);
@@ -25,16 +26,16 @@ function App() {
   async function submitForm(e) {
     e.preventDefault();
 
-    await apiWeatherCall(cityName.current?.value).then((data) => {
-      setData(data);
-    });
-    await apiPexelsCall(cityName.current?.value).then((photo) =>
-      setPhoto(photo)
-    );
+    const weatherData = await apiWeatherCall(cityName.current?.value);
 
-    cityName.current.value = "";
+    const photoData = await apiPexelsCall(cityName.current?.value);
+    if (weatherData.name) {
+      setData(weatherData);
+      setPhoto(photoData);
+    } else {
+      <CardError />;
+    }
   }
-
   return (
     <>
       {photo ? (
@@ -42,7 +43,7 @@ function App() {
           <img
             className="img-background"
             alt=""
-            src={photo.photos[1].src.landscape}
+            src={photo.photos[0].src.landscape}
           />
           <WeatherInput fnChangedValue={cityName} submitForm={submitForm} />
           <div className="info-weather">
