@@ -6,8 +6,10 @@ const SearchCard = ({ children }) => {
   return (
     <div className="search-card">
       {children}
+
       <h3 className="search-text">
-        Bem vindo ao App, Procure a cidade que deseja
+        Bem vindo ao WeatherApp, aqui você encontra tudo sobre o tempo da sua
+        cidade.
       </h3>
       <div className="search-img">
         <img src={imgSearch} alt="" />
